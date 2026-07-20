@@ -1,4 +1,5 @@
 import {
+
   LayoutDashboard,
   Users,
   Tractor,
@@ -9,18 +10,19 @@ import {
   BrainCircuit,
   Settings,
 } from "lucide-react";
+import Link from "next/link";
 
 const menu = [
-  { name: "Dashboard", icon: LayoutDashboard },
-  { name: "Customers", icon: Users },
-  { name: "Machines", icon: Tractor },
-  { name: "Workshop", icon: Wrench },
-  { name: "Inventory", icon: Package },
-  { name: "Sales", icon: PoundSterling },
-  { name: "Finance", icon: BarChart3 },
-  { name: "Analytics", icon: BarChart3 },
-  { name: "AI Centre", icon: BrainCircuit },
-  { name: "Settings", icon: Settings },
+  { name: "Dashboard", href: "/", icon: LayoutDashboard },
+  { name: "Customers", href: "/customers", icon: Users },
+  { name: "Machines", href: "/machines", icon: Tractor },
+  { name: "Workshop", href: "/workshop", icon: Wrench },
+  { name: "Inventory", href: "/inventory", icon: Package },
+  { name: "Sales", href: "/sales", icon: PoundSterling },
+  { name: "Finance", href: "/finance", icon: BarChart3 },
+  { name: "Analytics", href: "/analytics", icon: BarChart3 },
+  { name: "AI Centre", href: "/aicentre", icon: BrainCircuit },
+  { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export default function Sidebar() {
@@ -37,24 +39,91 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 p-4">
-        {menu.map((item, index) => {
-          const Icon = item.icon;
+        <div className="mb-6">
+  <p className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-slate-500">
+    Operations
+  </p>
 
-          return (
-            <button
-              key={item.name}
-              className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-all ${
-                index === 0
-                  ? "bg-green-500 text-white shadow-lg"
-                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
-              }`}
-            >
-              <Icon size={20} />
+  {menu.slice(0, 4).map((item, index) => {
+    const Icon = item.icon;
 
-              <span>{item.name}</span>
-            </button>
-          );
-        })}
+    return (
+      <Link
+  href={item.href}
+        key={item.name}
+        className={`mb-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-all ${
+          index === 0
+            ? "bg-green-500 text-white shadow-lg"
+            : "text-slate-300 hover:bg-slate-800 hover:text-white"
+        }`}
+      >
+        <Icon size={20} />
+        <span>{item.name}</span>
+      </Link>
+    );
+  })}
+</div>
+
+<div className="mb-6">
+  <p className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-slate-500">
+    Business
+  </p>
+
+  {menu.slice(4, 7).map((item) => {
+    const Icon = item.icon;
+
+    return (
+      <button
+        key={item.name}
+        className="mb-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-slate-300 transition hover:bg-slate-800 hover:text-white"
+      >
+        <Icon size={20} />
+        <span>{item.name}</span>
+      </button>
+    );
+  })}
+</div>
+
+<div className="mb-6">
+  <p className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-slate-500">
+    Intelligence
+  </p>
+
+  {menu.slice(7, 9).map((item) => {
+    const Icon = item.icon;
+
+    return (
+      <button
+        key={item.name}
+        className="mb-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-slate-300 transition hover:bg-slate-800 hover:text-white"
+      >
+        <Icon size={20} />
+        <span>{item.name}</span>
+      </button>
+    );
+  })}
+</div>
+
+<div>
+  <p className="mb-2 px-4 text-xs font-bold uppercase tracking-wider text-slate-500">
+    System
+  </p>
+
+  {menu.slice(9).map((item) => {
+    const Icon = item.icon;
+
+    return (
+      <button
+        key={item.name}
+        className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-slate-300 transition hover:bg-slate-800 hover:text-white"
+      >
+        <Icon size={20} />
+        <span>{item.name}</span>
+      </button>
+    );
+  })}
+</div>
+      
       </nav>
 
       <div className="border-t border-slate-800 p-4 text-sm text-slate-500">

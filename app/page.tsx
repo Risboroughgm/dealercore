@@ -1,5 +1,7 @@
 import AppShell from "@/components/layout/AppShell";
 import StatCard from "@/components/dashboard/StatCard";
+import CommandCentre from "@/components/dashboard/CommandCentre";
+import DealerTable from "@/components/ui/DealerTable";
 import {
   Banknote,
   Wrench,
@@ -50,6 +52,8 @@ export default function Home() {
             colour="bg-violet-500"
           />
         </div>
+        <CommandCentre />
+        <DealerTable />
       </div>
     </AppShell>
   );

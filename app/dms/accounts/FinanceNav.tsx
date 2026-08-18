@@ -1,3 +1,84 @@
 import Link from 'next/link';
-const items=[['Command Centre','/dms/accounts'],['Working Capital','/dms/accounts/working-capital'],['Purchase Ledger','/dms/accounts/purchase-ledger'],['Banking','/dms/accounts/banking'],['VAT & Tax Control','/dms/accounts/vat'],['Profitability','/dms/accounts/profitability'],['Controls','/dms/accounts/controls'],['Recurring','/dms/accounts/recurring'],['Adjustments','/dms/accounts/adjustments'],['General Ledger','/dms/accounts/ledger'],['Financial Statements','/dms/accounts/reports'],['Stock Accounting','/dms/accounts/stock-accounting'],['Fixed Assets','/dms/accounts/assets'],['Budgets & Forecasts','/dms/accounts/budgets'],['Period Close','/dms/accounts/period-close']];
-export default function FinanceNav({active}:{active:string}){return <div className="finance-subnav">{items.map(([name,href])=><Link key={name} href={href} className={active===name?'active':''}>{name}</Link>)}</div>}
+
+type Shortcut={label:string;href:string};
+const config:Record<string,{title:string;shortcuts:Shortcut[]}>= {
+  'Working Capital':{title:'Working Capital & Treasury',shortcuts:[
+    {label:'Aged Debtors',href:'/dms/accounts/working-capital#aged-debtors'},
+    {label:'Aged Creditors',href:'/dms/accounts/working-capital#aged-creditors'},
+    {label:'Payment Runs',href:'/dms/accounts/working-capital#payment-runs'},
+    {label:'13 Week Cash Flow',href:'/dms/accounts/working-capital#cash-flow'}]},
+  'Purchase Ledger':{title:'Purchase Ledger',shortcuts:[
+    {label:'Supplier Bills',href:'/dms/accounts/purchase-ledger'},
+    {label:'Supplier Credits',href:'/dms/accounts/adjustments'},
+    {label:'Payment Runs',href:'/dms/accounts/working-capital#payment-runs'},
+    {label:'Aged Creditors',href:'/dms/accounts/working-capital#aged-creditors'}]},
+  'Banking':{title:'Banking & Reconciliation',shortcuts:[
+    {label:'Bank Accounts',href:'/dms/accounts/banking#bank-accounts'},
+    {label:'Statement Import',href:'/dms/accounts/banking#import'},
+    {label:'Reconciliation',href:'/dms/accounts/banking#reconciliation'},
+    {label:'Unreconciled',href:'/dms/accounts/banking#unreconciled'}]},
+  'VAT & Tax Control':{title:'VAT & Tax Control',shortcuts:[
+    {label:'VAT Return',href:'/dms/accounts/vat'},
+    {label:'VAT Detail',href:'/dms/accounts/vat#detail'},
+    {label:'VAT Control',href:'/dms/accounts/vat#control'},
+    {label:'Saved Returns',href:'/dms/accounts/vat#returns'}]},
+  'Profitability':{title:'Dealership Profitability',shortcuts:[
+    {label:'Revenue Streams',href:'/dms/accounts/profitability#streams'},
+    {label:'Manufacturers',href:'/dms/accounts/profitability#manufacturers'},
+    {label:'Margins',href:'/dms/accounts/profitability#margins'},
+    {label:'Contribution',href:'/dms/accounts/profitability#contribution'}]},
+  'Controls':{title:'Controls & Approvals',shortcuts:[
+    {label:'Approval Rules',href:'/dms/accounts/controls#rules'},
+    {label:'Approval Queue',href:'/dms/accounts/controls#queue'},
+    {label:'Management Packs',href:'/dms/accounts/controls#packs'},
+    {label:'Audit Controls',href:'/dms/accounts/controls#audit'}]},
+  'Recurring':{title:'Recurring Accounting',shortcuts:[
+    {label:'Recurring Journals',href:'/dms/accounts/recurring'},
+    {label:'Active Templates',href:'/dms/accounts/recurring#templates'},
+    {label:'Due Postings',href:'/dms/accounts/recurring#due'},
+    {label:'History',href:'/dms/accounts/recurring#history'}]},
+  'Adjustments':{title:'Credits & Adjustments',shortcuts:[
+    {label:'Customer Credits',href:'/dms/accounts/adjustments#customer-credits'},
+    {label:'Supplier Credits',href:'/dms/accounts/adjustments#supplier-credits'},
+    {label:'Accruals',href:'/dms/accounts/adjustments#accruals'},
+    {label:'Prepayments',href:'/dms/accounts/adjustments#prepayments'}]},
+  'General Ledger':{title:'General Ledger',shortcuts:[
+    {label:'Journal Register',href:'/dms/accounts/ledger'},
+    {label:'Manual Journal',href:'/dms/accounts/ledger#manual-journal'},
+    {label:'Recurring Journals',href:'/dms/accounts/recurring'},
+    {label:'Financial Statements',href:'/dms/accounts/reports'}]},
+  'Financial Statements':{title:'Financial Statements',shortcuts:[
+    {label:'Profit & Loss',href:'/dms/accounts/reports#profit-loss'},
+    {label:'Balance Sheet',href:'/dms/accounts/reports#balance-sheet'},
+    {label:'Trial Balance',href:'/dms/accounts/reports#trial-balance'},
+    {label:'General Ledger',href:'/dms/accounts/ledger'}]},
+  'Stock Accounting':{title:'Stock Accounting',shortcuts:[
+    {label:'Stock Valuation',href:'/dms/accounts/stock-accounting#valuation'},
+    {label:'COGS',href:'/dms/accounts/stock-accounting#cogs'},
+    {label:'Adjustments',href:'/dms/accounts/stock-accounting#adjustments'},
+    {label:'Write Offs',href:'/dms/accounts/stock-accounting#write-offs'}]},
+  'Fixed Assets':{title:'Fixed Assets',shortcuts:[
+    {label:'Asset Register',href:'/dms/accounts/assets'},
+    {label:'Add Asset',href:'/dms/accounts/assets#add-asset'},
+    {label:'Depreciation',href:'/dms/accounts/assets#depreciation'},
+    {label:'Disposals',href:'/dms/accounts/assets#disposals'}]},
+  'Budgets & Forecasts':{title:'Budgets & Forecasts',shortcuts:[
+    {label:'Budgets',href:'/dms/accounts/budgets'},
+    {label:'Budget vs Actual',href:'/dms/accounts/budgets#variance'},
+    {label:'Forecasts',href:'/dms/accounts/budgets#forecasts'},
+    {label:'Cash Flow',href:'/dms/accounts/working-capital#cash-flow'}]},
+  'Period Close':{title:'Period & Year End',shortcuts:[
+    {label:'Close Checklist',href:'/dms/accounts/period-close'},
+    {label:'Month End',href:'/dms/accounts/period-close#month-end'},
+    {label:'Year End',href:'/dms/accounts/period-close#year-end'},
+    {label:'Lock Dates',href:'/dms/accounts/period-close#lock-dates'}]}
+};
+
+export default function FinanceNav({active}:{active:string}){
+  const section=config[active]||{title:active,shortcuts:[]};
+  return <div className="finance-module-bar">
+    <Link href="/dms/accounts" className="finance-back">← Finance Control Centre</Link>
+    <div className="finance-module-name"><span>FINANCE MODULE</span><strong>{section.title}</strong></div>
+    <div className="finance-module-shortcuts">{section.shortcuts.map(item=><Link key={item.label} href={item.href}>{item.label}</Link>)}</div>
+  </div>
+}

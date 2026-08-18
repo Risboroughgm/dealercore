@@ -8,6 +8,7 @@ import "./dms-kpi.css";
 import "./auth.css";
 import "./finance.css";
 import "./dms-finance-enterprise.css";
+import "./finance-speed.css";
 import FullPageNavigation from "./FullPageNavigation";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });

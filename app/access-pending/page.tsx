@@ -1,0 +1,3 @@
+"use client";
+import {createClient} from "../../lib/supabase/client";
+export default function AccessPending(){async function signOut(){const supabase=createClient();await supabase.auth.signOut();window.location.href="/login"}return <main className="auth-shell"><section className="auth-simple"><div className="auth-lockup"><div className="auth-mark"><span>◇</span></div><div><strong>DEALER<em>CORE</em></strong><small>ACCOUNT ACCESS CONTROL</small></div></div><h1>Account awaiting access</h1><p>Your sign-in is valid, but this user has not yet been assigned to a dealership organisation or role. A DealerCore administrator will need to grant access before you can enter the DMS.</p><button className="auth-submit" onClick={signOut}>Sign out</button></section></main>}

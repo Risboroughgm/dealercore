@@ -16,7 +16,7 @@ const modules=[
  ["Reports","Business intelligence","/dms/management","▥"],
  ["Settings","System & users","/dms/settings","⚙"]
 ];
-const financeLinks=[['Finance Command Centre','/dms/accounts'],['Purchase Ledger','/dms/accounts/purchase-ledger'],['General Ledger','/dms/accounts/ledger'],['Financial Statements','/dms/accounts/reports'],['Fixed Assets','/dms/accounts/assets'],['Budgets & Forecasts','/dms/accounts/budgets'],['Period Close','/dms/accounts/period-close']];
+const financeLinks=[['Finance Command Centre','/dms/accounts'],['Working Capital','/dms/accounts/working-capital'],['Purchase Ledger','/dms/accounts/purchase-ledger'],['Banking & Reconciliation','/dms/accounts/banking'],['Credits & Adjustments','/dms/accounts/adjustments'],['General Ledger','/dms/accounts/ledger'],['Financial Statements','/dms/accounts/reports'],['Stock Accounting','/dms/accounts/stock-accounting'],['Fixed Assets','/dms/accounts/assets'],['Budgets & Forecasts','/dms/accounts/budgets'],['Period Close','/dms/accounts/period-close']];
 export default function DmsShell({title,eyebrow,subtitle,active,actions,children}:{title:string;eyebrow:string;subtitle:string;active:string;actions?:ReactNode;children:ReactNode}){
  const [depot,setDepot]=useState("Main Branch"); const [userLabel,setUserLabel]=useState("DealerCore User");
  useEffect(()=>{const supabase=createClient();supabase.auth.getUser().then(({data})=>{if(data.user)setUserLabel((data.user.user_metadata?.display_name as string)||data.user.email||"DealerCore User")})},[]);

@@ -6,12 +6,12 @@ const modules=[
  ["Command Centre","Dealership overview","/dms","⌂"],
  ["Customers","CRM & enquiries","/dms/customers","♙"],
  ["Sales","Quotes, orders & invoices","/dms/sales","▣"],
- ["Machines","Stock & inventory","/dms/parts","◫"],
+ ["Machines","Stock & inventory","/dms/machines","◫"],
  ["Workshop","Jobs & scheduling","/dms/workshop","⌁"],
  ["Parts","Inventory & orders","/dms/parts","◇"],
- ["Purchasing","Suppliers & POs","/dms/parts","▤"],
+ ["Purchasing","Suppliers & POs","/dms/purchasing","▤"],
  ["Finance","Accounts & reporting","/dms/accounts","£"],
- ["Documents","Files & templates","/dms/accounts","▧"],
+ ["Documents","Files & templates","/dms/documents","▧"],
  ["Reports","Business intelligence","/dms/management","▥"],
  ["Settings","System & users","/dms/settings","⚙"]
 ];

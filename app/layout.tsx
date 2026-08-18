@@ -6,6 +6,7 @@ import "./dms.css";
 import "./dms-forms.css";
 import "./dms-kpi.css";
 import "./auth.css";
+import "./finance.css";
 import FullPageNavigation from "./FullPageNavigation";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });

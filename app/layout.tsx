@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./operations.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DealerCore | Risborough Group",
-  description: "CRM, quotations, invoicing, sales diary and workshop management for Risborough Group.",
+  description: "CRM, quotations, invoicing, sales diary, stock and workshop management for Risborough Group.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

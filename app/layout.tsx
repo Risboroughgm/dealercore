@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "DealerCore | Risborough Group",
-  description: "CRM, sales, invoicing and workshop management for Risborough Group.",
+  description: "CRM, quotations, invoicing, sales diary and workshop management for Risborough Group.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

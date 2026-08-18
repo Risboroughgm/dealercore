@@ -4,6 +4,7 @@ import "./globals.css";
 import "./operations.css";
 import "./dms.css";
 import "./dms-forms.css";
+import "./auth.css";
 import FullPageNavigation from "./FullPageNavigation";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });

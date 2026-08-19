@@ -1,0 +1,1 @@
+import {redirect} from "next/navigation";export default function Page(){redirect('/enterprise/operations/sales-order/new')}

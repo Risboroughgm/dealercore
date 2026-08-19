@@ -5,6 +5,7 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 type Shortcut={label:string;href:string};
 type ModuleConfig={title:string;shortcuts:Shortcut[]};
 const config:Record<string,ModuleConfig>={
+  'Sales Ledger':{title:'Sales Ledger',shortcuts:[{label:'Open Invoices',href:'/dms/accounts/sales-ledger#open-invoices'},{label:'Receive Payment',href:'/dms/accounts/sales-ledger#open-invoices'},{label:'Aged Debtors',href:'/dms/accounts/sales-ledger#aged-debtors'},{label:'Statements',href:'/dms/accounts/sales-ledger#statements'}]},
   'Working Capital':{title:'Working Capital & Treasury',shortcuts:[{label:'Aged Debtors',href:'/dms/accounts/working-capital#aged-debtors'},{label:'Aged Creditors',href:'/dms/accounts/working-capital#aged-creditors'},{label:'Payment Runs',href:'/dms/accounts/working-capital#payment-runs'},{label:'13 Week Cash Flow',href:'/dms/accounts/working-capital#cash-flow'}]},
   'Purchase Ledger':{title:'Purchase Ledger',shortcuts:[{label:'Supplier Bills',href:'/dms/accounts/purchase-ledger'},{label:'Supplier Credits',href:'/dms/accounts/adjustments#supplier-credits'},{label:'Payment Runs',href:'/dms/accounts/working-capital#payment-runs'},{label:'Aged Creditors',href:'/dms/accounts/working-capital#aged-creditors'}]},
   'Banking':{title:'Banking & Reconciliation',shortcuts:[{label:'Bank Accounts',href:'/dms/accounts/banking#bank-accounts'},{label:'Statement Import',href:'/dms/accounts/banking#import'},{label:'Reconciliation',href:'/dms/accounts/banking#reconciliation'},{label:'Unreconciled',href:'/dms/accounts/banking#unreconciled'}]},
@@ -22,13 +23,16 @@ const config:Record<string,ModuleConfig>={
 };
 const allActions:Shortcut[]=[
   {label:'Finance Control Centre',href:'/dms/accounts'},
+  {label:'Sales Ledger',href:'/dms/accounts/sales-ledger'},
   {label:'New Invoice',href:'/invoice/new'},
+  {label:'Receive Customer Payment',href:'/dms/accounts/sales-ledger#open-invoices'},
+  {label:'Customer Statements',href:'/dms/accounts/sales-ledger#statements'},
   {label:'Supplier Bills',href:'/dms/accounts/purchase-ledger'},
   {label:'Supplier Credits',href:'/dms/accounts/adjustments#supplier-credits'},
   {label:'Customer Credits',href:'/dms/accounts/adjustments#customer-credits'},
   {label:'Manual Journal',href:'/dms/accounts/ledger#manual-journal'},
   {label:'Payment Runs',href:'/dms/accounts/working-capital#payment-runs'},
-  {label:'Aged Debtors',href:'/dms/accounts/working-capital#aged-debtors'},
+  {label:'Aged Debtors',href:'/dms/accounts/sales-ledger#aged-debtors'},
   {label:'Aged Creditors',href:'/dms/accounts/working-capital#aged-creditors'},
   {label:'Bank Reconciliation',href:'/dms/accounts/banking#reconciliation'},
   {label:'Import Bank Statement',href:'/dms/accounts/banking#import'},
